@@ -1,0 +1,11 @@
+{% extends 'index/base.html' %}
+{% load i18n %}
+{% load url from future %}
+{% block title %}{% trans 'Welcome page' %}{% endblock %}
+
+{% block body %}
+	<ul>Navigation
+		<ol><a href="{% url 'index:index' %}">index/index.html page</a></ol>
+		<ol><a href="{% url 'admin:index' %}">admin page</a></ol>
+	</ul>	
+{% endblock %}
