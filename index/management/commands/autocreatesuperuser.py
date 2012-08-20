@@ -9,4 +9,5 @@ class Command(BaseCommand):
 		from django.contrib.auth.models import User
 		user = User.objects.create_user('admin', 'admin@admin.com', 'admin')
 		user.is_staff = True
+		user.is_superuser = True
 		user.save()
