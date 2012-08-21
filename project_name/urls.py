@@ -5,7 +5,7 @@ from django.contrib import admin
 
 admin.autodiscover()
 
-DEBUG=getattr(settings,"DEBUG",false)
+DEBUG=getattr(settings,"DEBUG",False)
 MEDIA_URL=getattr(settings,'MEDIA_URL','/media/')
 MEDIA_ROOT=getattr(settings,'MEDIA_ROOT','')
 
