@@ -9,10 +9,12 @@
   <meta charset="utf-8">
   <title>{% block title %}{% endblock %}</title>
   <meta name="viewport" content="width=device-width">
-  {% block head %}{% endblock %}
+  {% block head %}{% endblock %}  
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">  
+  <script data-main="{% static 'js/main' %}" src="{% static 'js/lib/require.js' %}"></script>
 </head>
 <body>
 	{% block body %}
-	{% endblock %}
+	{% endblock %}	
 </body>
 </html>

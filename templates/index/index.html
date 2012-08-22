@@ -4,8 +4,43 @@
 {% block title %}{% trans 'Welcome page' %}{% endblock %}
 
 {% block body %}
-	<ul>Navigation
-		<ol><a href="{% url 'index:index' %}">index/index.html page</a></ol>
-		<ol><a href="{% url 'admin:index' %}">admin page</a></ol>
-	</ul>	
+<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="{% url 'index:index' %}">Default page</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="">
+                <a href="{% url 'index:index' %}">Home</a>
+              </li>
+              <li class="">
+                <a href="{% url 'admin:index' %}">Admin</a>
+              </li>              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <header class="jumbotron subhead" style="margin-top: 40px;">
+	  <div class="container">
+	    <h1>Welcome</h1>
+	    <p class="lead">Autogenerate page.</p>
+	  </div>
+	</header>
+
+    <div class="container">
+	    <div class="row show-grid">		    
+	      <div class="row show-grid">
+	        <div class="span12" data-original-title="">
+	          <p>Admin panel: login/password - admin/admin</p>
+	        </div>		        
+	      </div>
+		</div>
+	</div>
 {% endblock %}
