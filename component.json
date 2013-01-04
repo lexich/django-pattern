@@ -1,0 +1,17 @@
+{
+  "name": "simple-bower",
+  "version": "0.0.0",
+  "dependencies": {
+    "jquery": "~1.8.3",    
+    "requirejs": "*",
+    "backbone":"*",
+    "underscore":"*",
+    "normalize-css":"*",
+    "html5shiv":"*"
+  },
+  "exportsOverride": {    
+    "requirejs": {
+      "js": "require.js"
+    }
+  }
+}
