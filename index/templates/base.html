@@ -11,7 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="{% block meta-description %}{% endblock %}">
   {% block head %}{% endblock %}  
-  <link href="css/normalize.css" rel="stylesheet" media="all" />
+  <link href="{% static 'css/normalize.css' %}" rel="stylesheet" media="all" />
   <link rel="stylesheet" href="{% static 'css/style.css' %}">    
 	<!--[if lt IE 9]>
 		<script src="{% static 'js/html5shiv.js' %}" media="all"></script>
