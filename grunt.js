@@ -37,5 +37,5 @@ grunt.initConfig({
 
 grunt.loadNpmTasks('grunt-less');
 grunt.loadNpmTasks('grunt-contrib-copy');
-grunt.loadNpmTasks('grunt-bower');
+grunt.registerTask('default', 'less copy');
 };
