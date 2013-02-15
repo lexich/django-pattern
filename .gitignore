@@ -1,7 +1,11 @@
 *.log
 *.pot
 *.pyc
-local_settings.py
-settings.py
 node_modules
 components
+#local_settings.py
+#settings.py
+#static
+#media
+#db
+#log
