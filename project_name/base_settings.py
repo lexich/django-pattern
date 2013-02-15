@@ -63,6 +63,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
+    'django.contrib.flatpages',
     'grappelli',
     'django.contrib.admin',
     'django.contrib.admindocs',
@@ -94,6 +96,21 @@ LOGGING = {
         },
     }
 }
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    # default template context processors
+    "django.contrib.auth.context_processors.auth",
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+
+    # django 1.2 only
+
+    # required by django-admin-tools
+    'django.core.context_processors.request',
+    'index.context_processors.process_settings',
+)
+
 
 #django-jinja
 DEFAULT_JINJA2_TEMPLATE_EXTENSION = '.jinja.html'

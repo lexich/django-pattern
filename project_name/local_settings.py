@@ -4,6 +4,7 @@ from base_settings import *
 import os
 
 DEBUG = True
+TEMPLATE_DEBUG=DEBUG
 
 DATABASES = {
     'default': {

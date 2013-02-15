@@ -1,6 +1,7 @@
 {% load static %}
 {% load i18n %}
 {% load url from future %}
+{% load flatpages %}
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html lang="en-us" class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>    <html lang="en-us" class="lt-ie9 lt-ie8"> <![endif]-->
@@ -37,15 +38,29 @@
     {% endblock %}
 
     {% block main %}
-    <div class="wrap">
-        <section role="main">
+    <div class="wrap fluid-container">
+        <section role="main fluid-row">
             {% block main-header %}
                 <header>
                     <h2>{% block main-header-title %}Title{% endblock %}</h2>
                     {% block main-header-content %}{% endblock %}
                 </header>
             {% endblock %}
-            {% block main-content %}{% endblock %}
+            <div class="span8">
+                {% block main-content %}{% endblock %}
+            </div>
+            <div class="span4">
+                <article>
+                    <h3>{% trans 'Sites' %}</h3>
+                    <menu class="nav nav-pills nav-stacked">
+                        {% for flatpage in meta.flatpages %}
+                        <li>
+                            <a href="{% url 'django.contrib.flatpages.views.flatpage' url=flatpage.url %}">{{ flatpage.title }}</a>
+                        </li>
+                        {% endfor %}
+                    </menu>
+                </article>
+            </div>
         </section>
     </div>
     {% endblock %}
@@ -53,7 +68,7 @@
 
 
     {% block footer %}
-        <footer role="contentinfo">
+        <footer role="contentinfo" class="fluid-container">
             {% block footer-content %}{% endblock %}
         </footer>
     {% endblock %}

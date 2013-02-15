@@ -2,7 +2,6 @@ from django.conf.urls import patterns, include, url
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-
 admin.autodiscover()
 
 DEBUG=getattr(settings,"DEBUG",False)
@@ -15,6 +14,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^accounts/', include('registration.urls',namespace="registration")),
+    url('^pages/', include('django.contrib.flatpages.urls')),
 )
 
 if DEBUG:
