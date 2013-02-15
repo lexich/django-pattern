@@ -33,8 +33,6 @@ SECRET_KEY = 'rxc$kegpu&amp;l(=5dbi*y+xeneefh2(@^z43vt&amp;4!j67f8z+ldz%'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
-    'django_jinja.loaders.AppLoader',
-    'django_jinja.loaders.FileSystemLoader',
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader'
 )
