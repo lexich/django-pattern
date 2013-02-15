@@ -3,74 +3,50 @@
 {% load url from future %}
 
 {% block title %}
-  {% trans 'Welcome page' %}
+    {% trans 'Welcome page' %}
 {% endblock %}
 
 {% block description %}
-  {% trans 'Description for welcome page' %}
+    {% trans 'Description for welcome page' %}
 {% endblock %}
 
 {% block head %}
-  <!-- additional dependecies -->
-{% endblock %}  
+    <!-- additional dependecies -->
+{% endblock %}
 
 {% block header-content %}
-  {% trans 'Welcome page' %}
+    {% trans 'Welcome page' %}
 {% endblock %}
 
-{% block header-nav %}
-  <ul>
-    <li>
-      <a href="#">Main</a>
-    </li>
-    <li>
-      <a href="#about">About</a>
-    </li>
-    <li>
-      <a href="#faq">FAQ</a>
-    </li>
-  </ul>
-{% endblock %}
+
 
 
 {% block main-header-title %}
-  {% trans 'Getting Started' %}
+    {% trans 'Getting Started' %}
 {% endblock %}
 
-{% block main-header-content %}
-  <ul>
-    <li>
-      <a href="#introduction">introduction</a>
-    </li>
-    <li>
-      <a href="#instructions">instruction</a>
-    </li>
-  </ul>
-{% endblock %}
 
 {% block main-content %}
-  <article id="introduction">          
-    <h3>Introduction</h3>       
-    <p>Welcome to <abbr title="HyperText Markup Language 5">HTML5</abbr> Bones. This is a template that contains comments to aid you with setting up your <abbr title="HyperText Markup Language 5">HTML5</abbr> document.</p>        
-  </article>
-      
-  <article id="instructions">     
-    <h3>Instructions</h3>       
-    <ol>
-      <li>Read the comments in this template</li>
-      <li>Decide how you think your content may fit into the template</li>
-      <li>Start building your document</li>
-    </ol>    
-  </article>      
+    <article id="introduction">
+        <h3>Introduction</h3>
+        <p>Welcome to <abbr title="HyperText Markup Language 5">HTML5</abbr> Bones. This is a template that contains comments to aid you with setting up your <abbr title="HyperText Markup Language 5">HTML5</abbr> document.</p>
+    </article>
 
-  <aside role="complementary">          
-    <h3>Did you know?</h3>
-    <p>The article and section elements cause a lot of confusion when people are trying to decide how and when to use them. The article: <a href="http://www.iandevlin.com/blog/2011/04/html5/html5-section-or-article">section or article?</a> might help you choose.</p>        
-  </aside>
+    <article id="instructions">
+        <h3>Instructions</h3>
+        <ol>
+            <li>Read the comments in this template</li>
+            <li>Decide how you think your content may fit into the template</li>
+            <li>Start building your document</li>
+        </ol>
+    </article>
+
+    <aside role="complementary">
+        <h3>Did you know?</h3>
+        <p>The article and section elements cause a lot of confusion when people are trying to decide how and when to use them. The article: <a href="http://www.iandevlin.com/blog/2011/04/html5/html5-section-or-article">section or article?</a> might help you choose.</p>
+    </aside>
 {% endblock %}
 
 {% block footer-content %}
-  <small>Copyright &copy; <time datetime="2012">2012</time></small>
+    <small>Copyright &copy; <time datetime="2012">2012</time></small>
 {% endblock %}
-
-      

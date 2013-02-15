@@ -1,0 +1,16 @@
+{% extends 'registration/base.html' %}
+{% load i18n %}
+{% load url from future %}
+{% block registration-title %}{% trans 'Activation' %}{% endblock %}
+{% block registration-content %}
+<p>
+    {% blocktrans %}
+        Hello, {{ account }}!
+    {% endblocktrans %}
+</p>
+<p>
+    {% blocktrans %}
+        Your account is activate. <a href="{% url auth_login %}">Yor</a> are welcome.
+    {% endblocktrans %}
+</p>
+{% endblock %}

@@ -13,6 +13,8 @@ urlpatterns = patterns('',
     url(r'^', include('index.urls', namespace='index')),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^grappelli/', include('grappelli.urls')),
+    url(r'^accounts/', include('registration.urls',namespace="registration")),
 )
 
 if DEBUG:

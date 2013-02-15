@@ -1,2 +1,7 @@
 django
 south
+django-jinja
+django-grappelli
+https://bitbucket.org/ssbb/django-cked/get/default.tar.gz#egg=django-cked
+django-debug-toolbar
+django-registration

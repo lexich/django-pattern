@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block header %}
+    <div class="fluid-container">
+        <div class="fluid-row">
+            <div class="span4 offset4">
+                <h1>{% block registration-title %}{% endblock %}</h1>
+                {% block registration-content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+    <header role="banner">
+        <h1 class="title">{% block header-content %}Welcome{% endblock %}</h1>
+    </header>
+{% endblock %}

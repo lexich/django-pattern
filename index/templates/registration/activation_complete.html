@@ -1,0 +1,7 @@
+{% extends 'registration/base.html' %}
+{% load i18n %}
+{% load url from future %}
+{% block registration-title %}{% trans 'Activation is success' %}{% endblock %}
+{% block registration-content %}
+    <p><a href="{% url 'index:index' %}">{% trans 'Go to the main page' %}</a></p>
+{% endblock %}

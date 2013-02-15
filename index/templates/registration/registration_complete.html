@@ -1,0 +1,10 @@
+{% extends 'registration/base.html' %}
+{% load i18n %}
+{% load url from future %}
+{% block registration-title %}{% trans 'Registration complete' %}{% endblock %}
+{% block registration-content %}
+    {% blocktrans %}
+        Thanks for your time. We send activation code on your e-mail.
+        You need to accept registration. Only click to receive link.
+    {% endblocktrans %}
+{% endblock %}

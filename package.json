@@ -21,6 +21,9 @@
     "coffee-script":"*",
     "grunt": "*",
     "grunt-less":"*",
-    "grunt-contrib-copy":"*"    
+    "grunt-clean":"*",
+    "grunt-coffee":"*",
+    "grunt-contrib-copy":"*",
+    "grunt-reload":"*"
   }  
 }

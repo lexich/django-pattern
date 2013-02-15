@@ -1,65 +1,69 @@
 {% load static %}
 {% load i18n %}
+{% load url from future %}
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html lang="en-us" class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>    <html lang="en-us" class="lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>    <html lang="en-us" class="lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en-us"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <title>{% block title %}{% endblock %}</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="{% block meta-description %}{% endblock %}">
-  {% block head %}{% endblock %}  
-  <link href="{% static 'css/normalize.css' %}" rel="stylesheet" media="all" />
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">    
-	<!--[if lt IE 9]>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="{% block meta-description %}{% endblock %}">
+    {% block head %}{% endblock %}
+    <link href="{% static 'css/normalize.css' %}" rel="stylesheet" media="all" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!--[if lt IE 9]>
 		<script src="{% static 'js/html5shiv.js' %}" media="all"></script>
 		<script src="{% static 'js/html5shiv-printshiv.js' %}" media="print"></script>
 	<![endif]-->
 </head>
 <body>
 {% block body %}
-	{% block "header" %}
-	<header role="banner">				
-		<h1>{% block header-content %}Welcome{% endblock %}</h1>		
-		<nav role="navigation">{% block header-nav %}{% endblock %}</nav>		
-	</header>
-	{% endblock %}
-		
-	{% block main %}
-	<div class="wrap">		
-		<section role="main">
-			{% block main-header %}
-			<header>
-	        	<h2>{% block main-header-title %}Title{% endblock %}</h2>        
-        		{% block main-header-content %}{% endblock %}
-	      	</header> 
-			{% endblock %}		
-	    	{% block main-content %}{% endblock %}
-		</section>
-	</div>
-	{% endblock %}
-		
-	{% block footer %}
-	<footer role="contentinfo">
-		{% block footer-content %}{% endblock %}
-	</footer>	
-	{% endblock %}
-		
+    {% block header %}
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <a class="brand" href="{% url 'index:index' %}">{% trans 'Title' %}</a>
+            <menu class="nav">
+                {% block header-menu %}{% endblock %}
+            </menu>
+        </div>
+    </div>
+    <header role="banner" class="subhead">
+        <h1 class="title">{% block header-content %}Welcome{% endblock %}</h1>
+        <nav role="navigation">{% block header-nav %}{% endblock %}</nav>
+    </header>
+    {% endblock %}
+
+    {% block main %}
+    <div class="wrap">
+        <section role="main">
+            {% block main-header %}
+                <header>
+                    <h2>{% block main-header-title %}Title{% endblock %}</h2>
+                    {% block main-header-content %}{% endblock %}
+                </header>
+            {% endblock %}
+            {% block main-content %}{% endblock %}
+        </section>
+    </div>
+    {% endblock %}
+
+
+
+    {% block footer %}
+        <footer role="contentinfo">
+            {% block footer-content %}{% endblock %}
+        </footer>
+    {% endblock %}
+
 {% endblock %}
 
 {% block scripts %}
-<script data-main="{% static 'js/main' %}" src="{% static 'js/lib/require.js' %}"></script>
+    <script data-main="{% static 'js/main' %}" src="{% static 'js/lib/require.js' %}"></script>
+    <script>__reloadServerUrl="ws://localhost:6001";</script>
+    <script src="//localhost:6001/__reload/client.js"></script>
 {% endblock %}
 </body>
 </html>
-
-
-	
-	
-	
-	
-	
-	
-\

@@ -2,6 +2,9 @@
 *.pot
 *.pyc
 local_settings.py
+settings.py
 node_modules
 components
 db
+static
+!*/static/*
