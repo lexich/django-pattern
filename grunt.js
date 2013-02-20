@@ -8,6 +8,7 @@ module.exports = function (grunt) {
       css: "<%= resource.path %>/css",
       less: "<%= resource.path %>/less",
       img: "<%= resource.path %>/img",
+      images: "<%= resource.path %>/images",
       font: "<%= resource.path %>/font",
       coffee: "<%= resource.path %>/coffee"
     },
@@ -44,6 +45,14 @@ module.exports = function (grunt) {
       coffee:{
         files:"<%= resource.coffee %>/*.coffee",
         tasks:["coffee","reload"]
+      },
+      templates:{
+        files:["templates/*.html","templates/**/*.html","templates/**/**/*.html"],
+        tasks:["reload"]
+      },
+      templates_index:{
+        files:["index/templates/*.html","index/templates/**/*.html","index/templates/**/**/*.html"],
+        tasks:["reload"]
       }
     },
     copy: {
@@ -56,17 +65,28 @@ module.exports = function (grunt) {
           { src: "<%= components %>/bootstrap/docs/assets/js/bootstrap.min.js", dest: "<%= resource.js %>/lib/" },
           { src: "<%= components %>/html5shiv/dist/*.js", dest: "<%= resource.js %>/lib/" },
           { src: "<%= components %>/normalize-css/*.css", dest: "<%= resource.css %>/" },
-          { src: "<%= components %>/bootstrap/img/*", dest: "<%= resource.img %>/" }
-        ],
-        options: {
-          flatten: true
-        }
+          { src: "<%= components %>/bootstrap/img/**", dest: "<%= resource.img %>/" }
+        ], options: { flatten: true }
+      },
+      foundation:{
+        files:[
+          { src: "<%= components %>/foundation/stylesheets/foundation.css", dest: "<%=resource.css %>/"},
+          { src: "<%= components %>/foundation/javascripts/*.js", dest: "<%=resource.js %>/lib/foundation/"},
+          { src: "<%= components %>/foundation/images/**/**/*.png", dest: "<%= resource.images %>/foundation/orbit/"}
+        ], options: { flatten: true }
+      },
+      orbit:{
+        files:[
+          { src: "<%= components %>/orbit/orbit*.css", dest: "<%=resource.css %>/orbit.css"},
+          { src: "<%= components %>/orbit/jquery.orbit*.js", dest: "<%=resource.js %>/lib/foundation/jquery.orbit.js"}
+        ], options: { flatten: true }
       }
     },
     clean: {
       css: "<%= resource.css %>",
       img: "<%= resource.img %>",
-      js: "<%= resource.js %>/lib"
+      js: "<%= resource.js %>/lib",
+      images: "<%= resource.images %>"
     }
   });
 

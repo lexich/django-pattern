@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% load zinnia_tags i18n %}
+{% load url from future %}
+
+{% block head %}
+    {% block meta %}
+        <meta name="generator" content="Zinnia {{ ZINNIA_VERSION }}" />
+        <meta name="language" content="{{ LANGUAGE_CODE }}" />
+    {% endblock %}
+    {% block link %}
+        <link rel="index" href="{% url 'zinnia_entry_archive_index' %}" />
+        <link rel="author" type="text/plain" href="{% url 'zinnia_humans' %}" />
+        <link rel="EditURI" type="application/rsd+xml" href="{% url 'zinnia_rsd' %}" />
+        <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="{% url 'zinnia_wlwmanifest' %}" />
+        <link rel="search" type="application/opensearchdescription+xml" title="Zinnia's Blog" href="{% url 'zinnia_opensearch' %}" />
+        <link rel="alternate" type="application/rss+xml" title="{% trans "RSS Feed of latest entries" %}" href="{% url 'zinnia_entry_latest_feed' %}" />
+        <link rel="alternate" type="application/rss+xml" title="{% trans "RSS Feed of latest discussions" %}" href="{% url 'zinnia_discussion_latest_feed' %}" />
+        {% get_archives_entries "zinnia/tags/archives_entries_link.html" %}
+    {% endblock %}
+    {% block meta-keywords %}{% get_tags as entry_tags %}{{ entry_tags|join:", "}}{% endblock %}
+{% endblock %}
+
+{% block scripts-append %}
+    {% block script %}{% endblock %}
+{% endblock %}
+
+{% block media %}{% endblock %}
+
+{% block header-menu-prepend %}
+    <li>
+        <a href="{% url 'zinnia_sitemap' %}" title="{% trans "Sitemap" %}" class="sitemap">
+            {% trans "Sitemap" %}
+        </a>
+    </li>
+    <li>
+        <a href="{% url 'zinnia_entry_latest_feed' %}" title="{% trans "RSS Feed of latest entries" %}" class="feeds">
+            {% trans "RSS Feed" %}
+        </a>
+    </li>
+    <li class="has-dropdown">
+        <a href="#">{% trans 'Навигация' %}</a>
+        <ul class="dropdown">
+            <li class="has-dropdown">
+                <a href="#">{% trans 'Categories' %}</a>
+                {% get_categories %}
+            </li>
+            <li class="has-dropdown">
+                <a href="#">{% trans 'Authors' %}</a>
+                {% get_authors %}
+            </li>
+        </ul>
+    </li>
+    <li class="divider"></li>
+{% endblock %}
+
+{% block content-index %}
+    {% block contet-navbar %}
+    <!-- Nav Bar -->
+    <div class="row">
+        <div class="twelve columns">
+            <h1>
+                <a href="{% url 'zinnia_entry_archive_index' %}" title="Zinnia's Blog" rel="home">
+                    Zinnia's Blog
+                </a>
+            </h1>
+            <hr />
+        </div>
+    </div>
+    <!-- End Nav -->
+    {% endblock %}
+
+
+    <!-- Main Page Content and Sidebar -->
+    <div class="row">
+        {% block content-main-base %}
+        <!-- Main Blog Content -->
+        <div class="seven columns" role="content">
+        {% block content %}
+            {% block breadcrumbs %}
+                {% zinnia_breadcrumbs %}
+            {% endblock %}
+        {% endblock %}
+        </div>
+        <!-- End Main Content -->
+        {% endblock %}
+
+        {% block content-sidebar-base %}
+
+        <!-- Sidebar -->
+        <aside class="five columns">
+            <form method="get" action="{% url 'zinnia_entry_search' %}">
+                <div class="row">
+                    <div class="nine mobile-three columns">
+                        <input type="text" value="{% trans "Keywords..." %}" name="pattern" onfocus="this.value=''" />
+                    </div>
+                    <div class="three mobile-one columns">
+                        <input type="submit" class="button expand postfix" value="{% trans 'Search' %}" />
+                    </div>
+                </div>
+            </form>
+
+            <div>
+                {% block sidebar %}
+                    <div id="widget-calendar" class="panel">
+                        <h3>{% trans "Calendar" %}</h3>
+                        {% get_calendar_entries %}
+                    </div>
+                    <div id="widget-tags" class="panel">
+                        <h3>{% trans "Tags" %}</h3>
+                        {% get_tag_cloud %}
+                    </div>
+                {% endblock %}
+            </div>
+
+        </aside>
+        {% endblock %}
+        <!-- End Sidebar -->
+    </div>
+
+    <!-- End Main Content and Sidebar -->
+
+{% endblock %}

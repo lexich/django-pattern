@@ -36,3 +36,6 @@ DEBUG_TOOLBAR_PANELS = (
 DEBUG_TOOLBAR_CONFIG = {
     'INTERCEPT_REDIRECTS': False
 }
+
+#fake smpt server
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

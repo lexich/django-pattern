@@ -9,12 +9,14 @@ MEDIA_URL=getattr(settings,'MEDIA_URL','/media/')
 MEDIA_ROOT=getattr(settings,'MEDIA_ROOT','')
 
 urlpatterns = patterns('',
-    url(r'^', include('index.urls', namespace='index')),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^accounts/', include('registration.urls',namespace="registration")),
-    url('^pages/', include('django.contrib.flatpages.urls')),
+    url(r'^pages', include('django.contrib.flatpages.urls')),
+    url(r'^blog/', include('zinnia.urls')),
+    url(r'^comments/', include('django.contrib.comments.urls')),
+    url(r'^', include('index.urls', namespace='index')),
 )
 
 if DEBUG:

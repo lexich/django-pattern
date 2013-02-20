@@ -12,9 +12,18 @@
     <title>{% block title %}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="{% block meta-description %}{% endblock %}">
+    <meta name="keywords" content="{% block meta-keywords %}{% endblock %}" />
+    <meta name="author" content="{% block meta-author %}{% endblock %}" />
+
+    <!--<link rel="pingback" href="/xmlrpc/" />-->
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" />
+    <link rel="home" href="{% url 'index:index' %}" />
     {% block head %}{% endblock %}
     <link href="{% static 'css/normalize.css' %}" rel="stylesheet" media="all" />
+    <link rel="stylesheet" href="{% static 'css/foundation.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/orbit.css' %}">
+
     <!--[if lt IE 9]>
 		<script src="{% static 'js/html5shiv.js' %}" media="all"></script>
 		<script src="{% static 'js/html5shiv-printshiv.js' %}" media="print"></script>
@@ -22,63 +31,148 @@
 </head>
 <body>
 {% block body %}
-    {% block header %}
-    <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <a class="brand" href="{% url 'index:index' %}">{% trans 'Title' %}</a>
-            <menu class="nav">
-                {% block header-menu %}{% endblock %}
-            </menu>
-        </div>
-    </div>
-    <header role="banner" class="subhead">
-        <h1 class="title">{% block header-content %}Welcome{% endblock %}</h1>
-        <nav role="navigation">{% block header-nav %}{% endblock %}</nav>
-    </header>
-    {% endblock %}
 
-    {% block main %}
-    <div class="wrap fluid-container">
-        <section role="main fluid-row">
-            {% block main-header %}
-                <header>
-                    <h2>{% block main-header-title %}Title{% endblock %}</h2>
-                    {% block main-header-content %}{% endblock %}
-                </header>
+{% block header %}
+<nav class="top-bar">
+    <ul>
+        <li class="name"><h1><a href="{% url 'index:index' %}">{% trans 'Title' %}</a></h1></li>
+        <li class="toggle-topbar"><a href="#"></a></li>
+    </ul>
+    <section>
+        <ul class="left">
+            {% block header-menu-prepend %}{% endblock %}
+            {% block header-menu %}
+                {% if user.is_staff %}
+                    <li><a href="{% url 'admin:index' %}">{% trans 'Admin' %}</a></li>
+                {% endif %}
+                {% if not user.is_active %}
+                    <li><a href="{% url 'registration:auth_login' %}">{% trans 'Login' %}</a></li>
+                    <li><a href="{% url 'registration:registration_register' %}">{% trans 'Sing up' %}</a></li>
+                {% else %}
+                    <li><a href="{% url 'registration:auth_logout' %}?next={% url 'index:index' %}">{% trans 'Logout' %}</a></li>
+                {% endif %}
             {% endblock %}
-            <div class="span8">
-                {% block main-content %}{% endblock %}
-            </div>
-            <div class="span4">
-                <article>
-                    <h3>{% trans 'Sites' %}</h3>
-                    <menu class="nav nav-pills nav-stacked">
-                        {% for flatpage in meta.flatpages %}
-                        <li>
-                            <a href="{% url 'django.contrib.flatpages.views.flatpage' url=flatpage.url %}">{{ flatpage.title }}</a>
-                        </li>
-                        {% endfor %}
-                    </menu>
-                </article>
-            </div>
-        </section>
-    </div>
-    {% endblock %}
-
-
-
-    {% block footer %}
-        <footer role="contentinfo" class="fluid-container">
-            {% block footer-content %}{% endblock %}
-        </footer>
-    {% endblock %}
-
+            {% block header-menu-append %}1{% endblock %}
+        </ul>
+    </section>
+</nav>
 {% endblock %}
+<!-- End Navigation -->
 
-{% block scripts %}
+
+<div class="row">
+    <div class="twelve columns">
+        {% block media %}
+            <!-- Content Slider -->
+            <div class="row">
+                <div class="twelve columns hide-for-small">
+                    <div id="featured">
+                        <img src="{% get_media_prefix %}overflow.jpg" alt="slide image">
+                        <img src="{% get_media_prefix %}captions.jpg" alt="slide image">
+                        <img src="{% get_media_prefix %}features.jpg" alt="slide image">
+                    </div>
+                </div>
+            </div>
+            <!-- End Content Slider -->
+            <!-- Mobile Header -->
+            {% block mobile-header %}
+                <div class="row">
+                    <div class="twelve columns show-for-small">
+                        <img src="{% get_media_prefix %}overflow.jpg">
+                    </div>
+                </div><br>
+            {% endblock %}
+            <!-- End Mobile Header -->
+        {% endblock %}
+        {% block content-index %}
+            {% block content-before %}{%  endblock %}
+            {% block content-main %}
+        <div class="row">
+            <div class="twelve columns">
+                <div class="row">
+                    {% block content-main-show %}
+                    <!-- Shows -->
+                    <div class="four mobile-two push-two-mobile columns">
+                        <h4>{% trans 'Sites' %}</h4>
+                        <hr/>
+                        {% for flatpage in meta.flatpages %}
+                        <div class="row">
+                            <div class="one column">
+                                <img src="http://megaplay.org/app/attachments/torrent_images/000/098/762/image_50x50.jpg" />
+                            </div>
+                            <div class="nine columns">
+                                <h5><a href="{% url 'django.contrib.flatpages.views.flatpage' url=flatpage.url %}">{{ flatpage.title }}</a></h5>
+                                <h6 class="subheader show-for-small">Doors at 00:00pm</h6>
+                            </div>
+                        </div><hr/>
+                        {% endfor %}
+                    </div>
+                    <!-- End Shows -->
+                    {% endblock %}
+
+                    {% block content-main-image %}
+                    <!-- Image -->
+                    <div class="four mobile-two pull-two-mobile columns">
+                        <img src="http://assets3.furfurmag.ru/assets/article_image-image/80/d2/2562298/article_image-image-article.5a80f494-17e3-470e-a68b-a56880fab80f.jpg" />
+                    </div>
+                    <!-- End Image -->
+                    {% endblock %}
+
+                    {% block content-main-feed %}
+                    <!-- Feed -->
+                    <div class="four mobile-four columns">
+                        <h4>{% trans 'Blog' %}</h4><hr/>
+                        {% with blogs=meta.blogs %}
+                        {% for post in blogs %}
+                            <div class="panel">
+                                <h5><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h5>
+                                <h6 class="subheader">{{ post.htmlcontent|safe }}</h6>
+                                <h6><a href="{{ post.get_absolute_url }}">Read More »</a></h6>
+                            </div>
+                        {% endfor %}
+                        {% endwith %}
+                        <div class="panel hide-for-small">
+                            <h5><a href="#">Post Title 2 »</a></h5>
+                        </div>
+
+                        <a href="{% url 'zinnia_entry_archive_index' %}" class="right">Go To Blog »</a>
+                    </div>
+                    <!-- End Feed -->
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+            {% endblock %}
+            {% block content-after %}{%  endblock %}
+        {% endblock %}
+        <!-- End Content -->
+        <!-- Footer -->
+        {% block footer %}
+        <footer class="row">
+            {% block footer-content %}
+            <div class="twelve columns"><hr />
+                <div class="row">
+                    <div class="six columns">
+                        <p>&copy; Copyright no one at all. Go to town.</p>
+                    </div>
+                </div>
+            </div>
+            {% endblock %}
+        </footer>
+        {% endblock %}
+        <!-- End Footer -->
+
+    </div>
+</div>
+
+    <!-- Included JS Files -->
+    {% block scripts %}
     <script data-main="{% static 'js/main' %}" src="{% static 'js/lib/require.js' %}"></script>
     <script>__reloadServerUrl="ws://localhost:6001";</script>
     <script src="//localhost:6001/__reload/client.js"></script>
+    {% block scripts-append %}{% endblock %}
+    {% endblock %}
+    <!-- End Footer -->
 {% endblock %}
 </body>
 </html>

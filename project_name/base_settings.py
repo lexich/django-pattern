@@ -33,6 +33,8 @@ SECRET_KEY = 'rxc$kegpu&amp;l(=5dbi*y+xeneefh2(@^z43vt&amp;4!j67f8z+ldz%'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
+    'django_jinja.loaders.AppLoader',
+    'django_jinja.loaders.FileSystemLoader',
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader'
 )
@@ -63,12 +65,16 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
     'django.contrib.flatpages',
+    'django.contrib.comments',#django comments
     'grappelli',
     'django.contrib.admin',
     'django.contrib.admindocs',
     'registration',
     'south',
-    'index'
+    'tagging', #zinnia
+    'mptt',    #zinnia
+    'index',
+    'zinnia',  #zinnia
 )
 
 LOGGING = {
@@ -101,10 +107,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.debug',
     'django.core.context_processors.i18n',
     'django.core.context_processors.media',
-
-    # django 1.2 only
-
-    # required by django-admin-tools
+    'zinnia.context_processors.version', #zinnia
     'django.core.context_processors.request',
     'index.context_processors.process_settings',
 )

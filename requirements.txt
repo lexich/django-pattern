@@ -3,3 +3,5 @@ South
 django-grappelli
 django-debug-toolbar
 django-registration
+django-blog-zinnia
+Pillow
