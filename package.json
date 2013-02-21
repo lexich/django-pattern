@@ -11,19 +11,22 @@
       "url": "https://github.com/twitter/bower/blob/master/LICENSE"
     }
   ],
-  
   "engines": {
     "node": ">=0.8.0"
   },
   "dependencies": {
     "bower": "*",
     "less": "*",
-    "coffee-script":"*",
-    "grunt": "*",
-    "grunt-less":"*",
-    "grunt-clean":"*",
-    "grunt-coffee":"*",
-    "grunt-contrib-copy":"*",
-    "grunt-reload":"*"
-  }  
+    "coffee-script": "*"
+  },
+  "devDependencies": {
+    "grunt-cli": "*",
+    "grunt-contrib-less": "*",
+    "grunt-contrib-clean": "*",
+    "grunt-contrib-coffee": "*",
+    "grunt-contrib-copy": "*",
+    "grunt-contrib-livereload": "*",
+    "grunt-contrib-requirejs":"*",
+    "grunt-contrib-watch":"*"
+  }
 }
