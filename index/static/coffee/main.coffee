@@ -4,44 +4,21 @@ require.config
     "underscore": "lib/underscore-min"
     "backbone": "lib/backbone-min"
     "bootstrap": "lib/bootstrap.min"
-    "foundation": "lib/foundation/foundation.min",
-    "foundation-app": "lib/foundation/app",
-    "modernizr": "lib/foundation/modernizr.foundation",
-    "orbit": 'lib/foundation/jquery.orbit'
-
-  baseUrl: "/static/js"
 
   shim:
-    "underscore":
+    underscore:
       exports: '_'
 
-    "backbone":
-      deps: [
-        "underscore"
-        "jquery"
-      ]
-      exports: "Backbone"
+  backbone:
+    deps: [
+      "underscore"
+      "jquery"
+    ]
 
-    "bootstrap":
-      deps: ["jquery"]
+    exports: "Backbone"
 
-    "modernizr":
-      exports: "Modernizr"
-
-    "jquery.placeholder":
-      deps:["jquery"]
-
-    "foundation":
-      deps:[
-        "lib/foundation/jquery.placeholder"
-        "modernizr"
-      ]
-
-    "foundation-app":
-      deps:["foundation"]
-
-    "orbit":
-      deps:["jquery"]
+  bootstrap:
+    deps: ["jquery"]
 
 
 require ["app"], (app)->

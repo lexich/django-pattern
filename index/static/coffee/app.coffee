@@ -2,9 +2,7 @@ define [
   "jquery"
   "underscore"
   "backbone"
-  "bootstrap",
-  "foundation-app",
-  "orbit"
+  "bootstrap"
 ],($, _, Backbone)->
   initialize: ->
     self = this
@@ -17,4 +15,3 @@ define [
   ready: ->
     #document ready code
     console.log "app.js ready"
-    $('#featured').orbit();
