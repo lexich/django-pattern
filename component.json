@@ -8,9 +8,7 @@
     "underscore":"*",
     "bootstrap":"*",
     "normalize-css":"*",
-    "html5shiv":"*",
-    "foundation":"http://foundation.zurb.com/files/foundation-3.2.5.zip",
-    "orbit":"git://github.com/zurb/orbit.git"
+    "html5shiv":"*"
   },
   "exportsOverride": {    
     "requirejs": {
